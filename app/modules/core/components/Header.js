@@ -32,11 +32,12 @@ export default class Header extends Component {
     return (
       <div style={styles.root}>
         <Text type="headline" style={styles.title}>
-          My App
+          Ferreteria Giss
         </Text>
-        <FlatButton label="Menu1" onTouchTap={() => onRequestRouteChange('/1')} style={styles.button} />
-        <FlatButton label="Menu2" onTouchTap={() => onRequestRouteChange('/2')} style={styles.button} />
-        <FlatButton label="Menu3" onTouchTap={() => onRequestRouteChange('/3')} style={styles.button} />
+        <FlatButton label="Inicio" onTouchTap={() => onRequestRouteChange('/')} style={styles.button} />
+        <FlatButton label="Login" onTouchTap={() => onRequestRouteChange('/login')} style={styles.button} />
+        <FlatButton label="Productos" onTouchTap={() => onRequestRouteChange('/products')} style={styles.button} />
+        <FlatButton label="Ventas" onTouchTap={() => onRequestRouteChange('/sellings')} style={styles.button} />
       </div>
     )
   }

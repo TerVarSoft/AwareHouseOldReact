@@ -1,6 +1,8 @@
 // @flow
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain as ipc } from 'electron'
 import MenuBuilder from './menu'
+
+require('./listeners/products');
 
 let mainWindow = null
 
@@ -56,6 +58,25 @@ app.on('ready', async () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined')
     }
+
+    let products = [
+      {
+        code: '1',
+        description: 'My description 1',
+        color: 'Green',
+        price: 70,
+        quantity: 30
+      },
+      {
+        code: '2',
+        description: 'My description 2',
+        color: 'Rojo',
+        price: 50,
+        quantity: 20
+      }
+    ]; 
+
+    mainWindow.webContents.send('products', products);
     mainWindow.show()
     mainWindow.focus()
   })
@@ -67,3 +88,5 @@ app.on('ready', async () => {
   const menuBuilder = new MenuBuilder(mainWindow)
   menuBuilder.buildMenu()
 })
+
+
