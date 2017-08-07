@@ -10,7 +10,7 @@ export default (store) => {
     childRoutes: [
       home(store),
       login(store),
-      products(store),
+      ...products(store),
       sellings(store),
     ]
   }

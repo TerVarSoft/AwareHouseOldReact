@@ -37,6 +37,7 @@ export default class Header extends Component {
         <FlatButton label="Inicio" onTouchTap={() => onRequestRouteChange('/')} style={styles.button} />
         <FlatButton label="Login" onTouchTap={() => onRequestRouteChange('/login')} style={styles.button} />
         <FlatButton label="Productos" onTouchTap={() => onRequestRouteChange('/products')} style={styles.button} />
+        <FlatButton label="Nuevo" onTouchTap={() => onRequestRouteChange('/manageProduct')} style={styles.button} />
         <FlatButton label="Ventas" onTouchTap={() => onRequestRouteChange('/sellings')} style={styles.button} />
       </div>
     )

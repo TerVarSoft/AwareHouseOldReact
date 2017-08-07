@@ -3,7 +3,7 @@ import { ipcRenderer as ipc } from 'electron'
 import PropTypes from 'prop-types'
 
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
@@ -16,33 +16,20 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
- /*ipc.on('products', function(event, products) {
-      console.log("dataaa working!", products);
-    });*/
-
 export default class Products extends Component {
 
   constructor() {
     super();
 
-    this.state = {products: []};
-  }
+    this.state = {products: [], product: {code:''}};
 
-  componentDidMount() {
-    ipc.send('get-products');
-    ipc.on('products', function(event, products) {
-      console.log("dataaa working22222222222!", products);
-      this.setState({products: products});
-    }.bind(this));
-  }
-
-  componentWillUnmount() {
-    ipc.removeAllListeners(['products']);
+    //this.onCodeChange = this.onCodeChange.bind(this);
+    //this.onClickSave = this.onClickSave.bind(this);
   }
 
   render () {
-    const formStyle = {
-      marginTop: '200px'
+    const mainDivStyle = {
+      padding: 30,
     };
 
     const styleFloatingButton = {
@@ -58,7 +45,7 @@ export default class Products extends Component {
       onRequestRouteChange
     } = this.props
 
-    let productsHtml = this.state.products.map(product => {
+    let productsHtml = this.props.products.map(product => {
       return (<TableRow key={product._id}>
         <TableRowColumn>{product.code}</TableRowColumn>
         <TableRowColumn>{product.description}</TableRowColumn>
@@ -69,7 +56,7 @@ export default class Products extends Component {
     });
 
     return (
-      <div>
+      <div style={mainDivStyle}>
         <Table>
           <TableHeader>
             <TableRow>
@@ -95,5 +82,6 @@ export default class Products extends Component {
 }
 
 Products.propTypes = {
+  products: PropTypes.array.isRequired,
   onRequestRouteChange: PropTypes.func.isRequired
 }

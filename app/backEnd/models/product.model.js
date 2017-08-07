@@ -8,6 +8,7 @@ export default class Product {
 
   constructor(data) {
     this._id = data._id.id ? data._id.id : data._id;
+    this.code = data.code;
     this.description = data.description;
     this.color = data.color;
     this.price = data.price;
