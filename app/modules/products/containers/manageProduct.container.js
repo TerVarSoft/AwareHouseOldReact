@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { createProduct } from '../actions'
+
 import ManageProduct from '../components/manageProduct.component';
 
 class Container extends Component {

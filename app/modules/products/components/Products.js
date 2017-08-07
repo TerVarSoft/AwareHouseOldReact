@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ipcRenderer as ipc } from 'electron'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router'
 
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
@@ -72,9 +73,11 @@ export default class Products extends Component {
           </TableBody>
         </Table>
 
-        <FloatingActionButton style={styleFloatingButton}>
-          <ContentAdd />
-        </FloatingActionButton>
+        <Link to="/manageProduct" style={styleFloatingButton}>
+          <FloatingActionButton >
+            <ContentAdd />
+          </FloatingActionButton>
+        </Link>
       </div>
 
     )

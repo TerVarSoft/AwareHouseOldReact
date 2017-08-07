@@ -3,7 +3,7 @@ import { ipcRenderer as ipc } from 'electron'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import Products from '../components/Products'
-import { loadProductsSuccess, createProduct } from '../actions'
+import { loadProductsSuccess } from '../actions'
 
 class Container extends Component {
   constructor() {
@@ -23,7 +23,7 @@ class Container extends Component {
 
   componentWillUnmount() {
     ipc.removeAllListeners(['products']);
-  }  
+  }
 
   onRequestRouteChange(route) {
     this.props.dispatch(push(route))
