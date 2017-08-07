@@ -16,9 +16,9 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
- ipc.on('products', function(event, products) {
+ /*ipc.on('products', function(event, products) {
       console.log("dataaa working!", products);
-    });
+    });*/
 
 export default class Products extends Component {
 
@@ -59,7 +59,7 @@ export default class Products extends Component {
     } = this.props
 
     let productsHtml = this.state.products.map(product => {
-      return (<TableRow key={product.code}>
+      return (<TableRow key={product._id}>
         <TableRowColumn>{product.code}</TableRowColumn>
         <TableRowColumn>{product.description}</TableRowColumn>
         <TableRowColumn>{product.color}</TableRowColumn>
@@ -89,7 +89,7 @@ export default class Products extends Component {
           <ContentAdd />
         </FloatingActionButton>
       </div>
-      
+
     )
   }
 }

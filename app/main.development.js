@@ -1,8 +1,7 @@
 // @flow
 import { app, BrowserWindow, ipcMain as ipc } from 'electron'
 import MenuBuilder from './menu'
-
-require('./listeners/products');
+import ProductsIpc from './backEnd/ipc/product.ipc'
 
 let mainWindow = null
 
@@ -74,9 +73,9 @@ app.on('ready', async () => {
         price: 50,
         quantity: 20
       }
-    ]; 
+    ];
 
-    mainWindow.webContents.send('products', products);
+    //mainWindow.webContents.send('products', products);
     mainWindow.show()
     mainWindow.focus()
   })
@@ -87,6 +86,6 @@ app.on('ready', async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow)
   menuBuilder.buildMenu()
+  const productIpc = new ProductsIpc(mainWindow)
+  productIpc.init()
 })
-
-
